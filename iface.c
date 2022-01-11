@@ -58,7 +58,7 @@ int get_local_mac(unsigned char *mac, int len_limit,char *iface)
         perror ("socket");
         return -1;
     }
-    strcpy (ireq.ifr_name, "eth0");
+    strcpy (ireq.ifr_name, iface);
 
     if (ioctl (sock, SIOCGIFHWADDR, &ireq) < 0)
     {
