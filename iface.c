@@ -9,8 +9,6 @@
 #include <errno.h>
 #include "iface.h"
 
-#define ETH_NAME "eth0"
-
 int get_local_mac(unsigned char *mac, int len_limit,char *iface);
 
 /*only ipv4*/
@@ -37,7 +35,7 @@ int get_if_info(struct list_head *list)
 		}
 
 		strcpy(tmp->iface, ifa->ifa_name);
-		if(get_local_mac(tmp->mac, 6, ETH_NAME) < 0)
+		if(get_local_mac(tmp->mac, 6, ifa->ifa_name) < 0)
 		{
 			perror("get local mac");
 			return -1;
